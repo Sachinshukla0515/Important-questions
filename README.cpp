@@ -20,8 +20,8 @@ public:
        
         int lmax[n];
         int rmax[n];
-        lmax[0]=height[0];
-        rmax[n-1]=height[n-1];
+        lmax[0]=height[0];  // to store the left max elements
+        rmax[n-1]=height[n-1]; // to store right max elements
         
         for(int i=1;i<n;i++)
             lmax[i]=max(lmax[i-1],height[i]);
@@ -30,7 +30,7 @@ public:
             rmax[i]=max(rmax[i+1],height[i]);
         
         
-        for(int i=1;i<n-1;i++)
+        for(int i=1;i<n-1;i++)    // first and last block will not be considered
           res+=min(lmax[i],rmax[i])-height[i];
           
         return res;
