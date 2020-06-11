@@ -11,8 +11,9 @@
 class Solution {
 public:
     int trap(vector<int>& height) {
-        
-        int res=0;
+        //Method 1:
+        //Time complexity: O(n)  space complexity : O(n)
+     /*   int res=0;
         int n=height.size();
        
         if(height.size()==0)
@@ -33,7 +34,27 @@ public:
         for(int i=1;i<n-1;i++)    // first and last block will not be considered
           res+=min(lmax[i],rmax[i])-height[i];
           
-        return res;
+        return res;   */
+        
+      //  Method 2: instead of making two left and right max array which stores the maximum height on left and right 
+    //side , we will use two pointers to do the smae thing so that it takes O(1) space;
+    // Time: O(1) space:O(1)
+    int left=0,right=n-1;
+    int left_max=0,right_max=0;
+    int res=0;
+    
+    while(left<right){
+        if(arr[left]<arr[right]){
+            left_max>=arr[left]?res+=left_max-arr[left]:left_max=arr[left];
+            left++;
+        }
+        else{
+         right_max>=arr[right]?res+=right_max-arr[right]:right_max=arr[right];
+         right--;
+      }
+    }
+        
+    return res;
     }
     
 };
