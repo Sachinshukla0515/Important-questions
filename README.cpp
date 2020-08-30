@@ -44,10 +44,14 @@ public:
     int res=0;
     
     while(left<right){
+        
+        //if min is left indexed element
         if(arr[left]<arr[right]){
             left_max>=arr[left]?res+=left_max-arr[left]:left_max=arr[left];
             left++;
         }
+        
+        //if min is right indexed element
         else{
          right_max>=arr[right]?res+=right_max-arr[right]:right_max=arr[right];
          right--;
